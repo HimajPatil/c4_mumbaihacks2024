@@ -63,7 +63,6 @@
 
     <section id="c4" class="bg-black text-white flex items-center justify-center flex-col">
 
-        <!-- <section class="flex justify-center items-center h-screen"> -->
         <div class="bg-white text-black p-8 rounded-lg shadow-lg m-20 upload-module">
             <h1 class="text-3xl font-bold mb-4">Upload Your Image</h1>
             <form action="" method="post" enctype="multipart/form-data" id="uploadForm">
@@ -78,11 +77,9 @@
 
         <div id="c4-output" class="w-2/3">
             <?php
-            require __DIR__ . '/vendor/autoload.php'; // remove this line if you use a PHP Framework.
+            require __DIR__ . '/vendor/autoload.php';
 
-            // Check if the form is submitted
             if (isset($_POST['upload'])) {
-                // Check if a file is selected
                 if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
                     $targetDir = 'uploads/';
 
@@ -94,14 +91,11 @@
 
                     $check = getimagesize($_FILES['image']['tmp_name']);
                     if ($check !== false) {
-                        // Move the uploaded file to the destination directory
                         if (file_exists($targetFile)) {
-                            // If the file already exists, delete it to allow overwriting
                             unlink($targetFile);
                         }
 
                         if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
-                            // Display the uploaded image
                             echo '<div class="w-100 flex items-center justify-center flex-col mb-2"><h1><b>Before</b></h1></div>';
                             echo '<div class="w-100 flex items-center justify-center flex-col mb-4"><img src="https://' . $imageDir . '" alt="Uploaded Image">' . '<h1><b>Path=> </b>' . $imageDir . '</h1>' . '</div>';
                         } else {
@@ -118,8 +112,8 @@
 
             if (isset($_POST['upload'])) {
                 // colorization start
-                // $url = 'https://prodapi.phot.ai/external/api/v3/user_activity/color-restoration-4k';
-                $apiKey = $_ENV;  // Replace with your actual API key
+                $url = 'https://prodapi.phot.ai/external/api/v3/user_activity/color-restoration-4k';
+                $apiKey = $_ENV  
 
                 $curl = curl_init($url);
 
@@ -130,8 +124,7 @@
                 ]);
 
                 $data = [
-                    'source_url' => 'https://c4.xinc.tech/uploads/qqwdase.jpeg'
-                    // 'source_url' => "http://" . $imageDir 
+                    'source_url' => "http://" . $imageDir 
                 ];
                 curl_setopt($curl, CURLOPT_POST, true);
                 curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($data));
