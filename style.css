@@ -1,0 +1,26 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+#features{
+    background: linear-gradient(to bottom, rgb(33, 33, 34), #000000)!important;
+    padding-bottom: 5px!important;
+}
+.upload-module{
+    background: linear-gradient(to bottom, #ffffff, #ffffff,#ffffff, #ffffff, #ffffff, #a0a0a0);
+}
+#c4 {
+  background: linear-gradient(to bottom, #000000, #001d29, #131313, #000000);
+  min-height: 80vh;
+}
+#c4-output-text {
+  font-family: "Roboto Mono", monospace;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: linear-gradient(to bottom, #001d29, #131313, #000000);
+}
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
